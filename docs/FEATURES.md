@@ -25,7 +25,10 @@
 ## ⭕ Status
 - Post **text** (6 background colors) or **photo** statuses.
 - 24-hour auto-expiry; story rings (coral = unviewed, gray = viewed).
-- Fullscreen viewer with progress bars, tap navigation, view counts on your own.
+- Fullscreen viewer with progress bars, tap navigation.
+- **Viewed-by sheet** — tap the 👁 count on your status to see exactly who viewed it (name, photo, "2h ago"), updating live.
+- **Reply to a status** — reply bar in the viewer; arrives in chat with a mini status preview card.
+- **React to a status** — 6 quick emojis; owner sees live reaction chips and who reacted.
 
 ## ✨ Bubble-only extras
 | Feature | Notes |
@@ -37,6 +40,7 @@
 ## 🔒 Privacy & safety
 - **Block/unblock** — enforced by a *restrictive* database policy: a blocked user physically cannot insert messages or reach you by call. Block list stays private (you never see who blocked you).
 - **Change password**, **log out**, per-chat **mute**.
+- **Confirm before destroy** — clear chat and delete chat always ask for confirmation first.
 - All data access governed by Postgres Row Level Security — users can only ever touch their own conversations.
 
 ## 🗂️ Organization
@@ -44,7 +48,10 @@
 - Contact-info drawer (tap the chat header): bio, shared-media gallery with lightbox, quick actions.
 
 ## 👤 Profiles & settings
-- Display name, @username, bio, 8 avatar colors — edited in Settings, synced to the other side.
+- Display name, @username, bio, **profile photo** (upload, shown everywhere) or 8 avatar colors — edited in Settings, synced to the other side.
 - Appearance: dark mode, chat wallpapers (tints + doodle patterns), 3 font sizes.
-- Notifications: message sound toggle. Account: invite-friends link, logout.
+- Notifications: message sound toggle + test-sound button. Account: invite-friends link, logout.
 - Guided profile setup right after signup.
+
+## 🔊 Sounds
+- Message notification pops (WebAudio, no files needed), incoming-call ringtone, **outgoing ring-ring while your call connects**.

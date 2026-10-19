@@ -275,3 +275,55 @@ create policy "read chat images" on storage.objects
 -- DONE. Next: Supabase Dashboard → Authentication → Providers → enable Email,
 -- and turn OFF "Confirm email" so users can log in instantly.
 -- ============================================================================
+
+-- ============================================================================
+-- V6 ADDENDUM — status depth, profile photos, sounds safety-net
+-- (run once, AFTER the base schema above; all statements are idempotent)
+-- ============================================================================
+
+alter table public.profiles add column if not exists avatar_url text;
+
+alter table public.messages add column if not exists status_ref jsonb;
+
+create table if not exists public.status_reactions (
+  status_id uuid not null references public.statuses(id) on delete cascade,
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  emoji text not null,
+  created_at timestamptz not null default now(),
+  primary key (status_id, user_id)
+);
+alter table public.status_reactions enable row level security;
+
+drop policy if exists "read status reactions" on public.status_reactions;
+create policy "read status reactions" on public.status_reactions for select to authenticated
+  using (exists (
+    select 1 from public.statuses s where s.id = status_reactions.status_id
+      and (s.user_id = auth.uid() or exists (
+        select 1 from public.conversations c
+        where (c.participant_a = auth.uid() and c.participant_b = s.user_id)
+           or (c.participant_b = auth.uid() and c.participant_a = s.user_id)))));
+
+drop policy if exists "manage own status reactions" on public.status_reactions;
+create policy "manage own status reactions" on public.status_reactions for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+-- allow photo re-uploads (same path, deterministic avatar filenames)
+drop policy if exists "authenticated update chat images" on storage.objects;
+create policy "authenticated update chat images" on storage.objects
+  for update to authenticated
+  using (bucket_id = 'chat-images') with check (bucket_id = 'chat-images');
+
+-- allow re-viewing a status to refresh its timestamp
+drop policy if exists "refresh own view" on status_views;
+create policy "refresh own view" on status_views
+  for update to authenticated
+  using (viewer_id = auth.uid()) with check (viewer_id = auth.uid());
+
+do $$ begin
+  if not exists (select 1 from pg_publication_tables where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'status_reactions') then
+    alter publication supabase_realtime add table public.status_reactions; end if;
+end $$;
+
+-- ============================================================================
+-- V6 DONE. No dashboard changes needed.
+-- ============================================================================

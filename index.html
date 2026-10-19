@@ -540,6 +540,185 @@ html[data-theme="dark"] #blocked-banner{background:#3a2c1a;color:#f5c86e}
 @keyframes msgflash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 1px 1px rgba(11,20,26,.15)}}
 /* setup modal swatches reuse .swatch-grid/.swatch */
 
+/* ============ V6: GLOW-UP ============ */
+/* --- profile photos --- */
+.ava-img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.avatar{overflow:hidden}
+.set-ava{overflow:hidden;cursor:pointer}
+.ava-actions{display:flex;gap:8px;margin-top:8px}
+.btn.sm{padding:7px 12px;font-size:13px}
+/* --- sidebar header: richer brand gradient + depth --- */
+.side-header{background:linear-gradient(120deg,#FF7A4D 0%,#FF6B4A 45%,#E85A38 100%)!important;
+  box-shadow:0 2px 12px rgba(232,90,56,.35);z-index:6}
+.side-header .me{color:#fff}
+#me-name{color:#fff;font-weight:700}
+.side-header .sub{color:rgba(255,255,255,.85)}
+.side-icons button{transition:transform .15s ease,background .15s ease}
+.side-icons button:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+.side-icons button:active{transform:scale(.92)}
+/* --- chat list: bigger avatars, glowing pills, lively rows --- */
+#chat-list .avatar{width:48px;height:48px;flex:0 0 48px;font-size:18px;
+  box-shadow:0 2px 8px rgba(11,20,26,.12);border:2px solid rgba(255,107,74,.15)}
+.chat-row{transition:background .15s ease,transform .15s ease;border-radius:12px;margin:2px 6px}
+.chat-row:hover{background:var(--row-hover);transform:translateX(3px)}
+.unread-badge{background:linear-gradient(135deg,#FF8A5C,#F04E23);color:#fff;
+  box-shadow:0 0 10px rgba(255,107,74,.55),0 2px 6px rgba(240,78,35,.35);
+  animation:v6-pillpop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes v6-pillpop{0%{transform:scale(.4)}100%{transform:scale(1)}}
+/* --- bubbles: softer, deeper --- */
+.bubble{border-radius:14px;box-shadow:0 1px 2px rgba(11,20,26,.12),0 4px 14px rgba(11,20,26,.06);
+  transition:box-shadow .2s ease}
+.bubble:hover{box-shadow:0 2px 4px rgba(11,20,26,.14),0 6px 20px rgba(11,20,26,.09)}
+/* --- glassmorphism modals + springy pop --- */
+.modal-overlay{background:rgba(20,12,8,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  animation:v6-fadein .18s ease-out}
+.modal{background:var(--sidebar-bg);
+  background:color-mix(in srgb,var(--sidebar-bg) 88%,transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.25);border-radius:18px;
+  box-shadow:0 12px 48px rgba(11,20,26,.25);
+  animation:v6-pop .3s cubic-bezier(.2,1.5,.35,1)}
+@keyframes v6-pop{0%{transform:scale(.85) translateY(12px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+@keyframes v6-fadein{from{opacity:0}to{opacity:1}}
+.modal .btn.primary{background:linear-gradient(135deg,#FF8A5C,#F04E23);border:none;
+  box-shadow:0 4px 14px rgba(240,78,35,.4);transition:transform .12s ease,box-shadow .12s ease}
+.modal .btn.primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(240,78,35,.5)}
+.modal .btn.primary:active{transform:scale(.96)}
+/* --- buttons: press ripple (scale+fade) --- */
+button{transition:transform .12s ease}
+button:active{transform:scale(.93)}
+.btn.primary{background:linear-gradient(135deg,#FF8A5C,#F04E23)!important;
+  box-shadow:0 4px 14px rgba(240,78,35,.35)}
+/* --- login: animated gradient + floating bubbles + glass card --- */
+#login-screen{background:linear-gradient(120deg,#2b1a12,#4a2418 40%,#7a2f1c 70%,#2b1a12);
+  background-size:300% 300%;animation:v6-bgdrift 18s ease-in-out infinite;overflow:hidden;position:relative}
+@keyframes v6-bgdrift{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+.login-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.login-particles i{position:absolute;bottom:-60px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.5),rgba(255,138,92,.12));
+  border:1px solid rgba(255,255,255,.25);animation:v6-rise linear infinite}
+.login-particles i:nth-child(1){left:8%;width:44px;height:44px;animation-duration:11s;animation-delay:0s}
+.login-particles i:nth-child(2){left:22%;width:26px;height:26px;animation-duration:14s;animation-delay:2s}
+.login-particles i:nth-child(3){left:38%;width:60px;height:60px;animation-duration:17s;animation-delay:5s}
+.login-particles i:nth-child(4){left:55%;width:32px;height:32px;animation-duration:12s;animation-delay:1s}
+.login-particles i:nth-child(5){left:70%;width:48px;height:48px;animation-duration:15s;animation-delay:3s}
+.login-particles i:nth-child(6){left:84%;width:24px;height:24px;animation-duration:10s;animation-delay:4s}
+.login-particles i:nth-child(7){left:93%;width:56px;height:56px;animation-duration:18s;animation-delay:6s}
+.login-particles i:nth-child(8){left:47%;width:20px;height:20px;animation-duration:9s;animation-delay:7s}
+@keyframes v6-rise{to{transform:translateY(-110vh)}}
+.login-card{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.5);box-shadow:0 24px 80px rgba(0,0,0,.35);position:relative;z-index:2}
+.login-card .login-steps-col>*{animation:v6-slideup .5s cubic-bezier(.2,.7,.3,1) backwards}
+.login-card .login-steps-col>*:nth-child(1){animation-delay:.05s}
+.login-card .login-steps-col>*:nth-child(2){animation-delay:.15s}
+.login-card .login-steps-col>*:nth-child(3){animation-delay:.25s}
+@keyframes v6-slideup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+#login-btn,#signup-btn{background:linear-gradient(135deg,#FF8A5C,#F04E23);border:none;
+  box-shadow:0 6px 20px rgba(240,78,35,.45);transition:transform .12s ease,box-shadow .12s ease}
+#login-btn:hover,#signup-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(240,78,35,.55)}
+/* --- tab switch slide --- */
+#tab-chats,#tab-status{transition:color .18s ease}
+.tab.active{position:relative}
+.tab.active::after{content:'';position:absolute;left:22%;right:22%;bottom:5px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#FF8A5C,#F04E23);animation:v6-tabin .25s ease-out}
+@keyframes v6-tabin{from{transform:scaleX(.3);opacity:0}to{transform:scaleX(1);opacity:1}}
+/* --- status ring shimmer on unviewed --- */
+.st-ring.unseen{background:conic-gradient(from 0deg,#FF8A5C,#F04E23,#FFD23F,#FF8A5C);
+  background-size:200% 200%;animation:v6-spin 3s linear infinite}
+@keyframes v6-spin{to{background-position:200% 0}}
+/* --- skeleton shimmer while chats load --- */
+.skel{display:flex;gap:12px;padding:12px 16px;align-items:center}
+.skel .sk-a{width:48px;height:48px;border-radius:50%;flex:none}
+.skel .sk-b{flex:1}
+.skel .sk-b i{display:block;height:12px;border-radius:6px;margin:6px 0}
+.skel .sk-a,.skel .sk-b i{background:linear-gradient(90deg,var(--input-bg) 25%,var(--divider-line) 50%,var(--input-bg) 75%);
+  background-size:200% 100%;animation:v6-shimmer 1.2s linear infinite}
+@keyframes v6-shimmer{to{background-position:-200% 0}}
+/* --- empty states: friendly CSS illustration --- */
+.empty-illu{width:110px;height:110px;margin:0 auto 18px;position:relative}
+.empty-illu::before{content:'';position:absolute;inset:0;border-radius:38% 62% 55% 45%/48% 42% 58% 52%;
+  background:linear-gradient(135deg,rgba(255,138,92,.25),rgba(240,78,35,.12));
+  border:2px dashed rgba(255,107,74,.4);animation:v6-float 5s ease-in-out infinite}
+.empty-illu::after{content:'💬';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px}
+@keyframes v6-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+/* --- v6: status viewer actions --- */
+.stv-actions{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:10px 14px 18px;
+  display:flex;flex-direction:column;gap:10px;align-items:center;
+  background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.stv-views{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);
+  border-radius:20px;padding:7px 16px;font-size:13.5px;backdrop-filter:blur(6px);cursor:pointer;
+  transition:transform .12s ease,background .12s ease}
+.stv-views:hover{background:rgba(255,255,255,.28);transform:translateY(-1px)}
+.stv-rchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.stv-rchip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;
+  border-radius:16px;padding:5px 12px;font-size:14px;cursor:pointer;transition:transform .12s ease}
+.stv-rchip:hover{transform:scale(1.08);background:rgba(255,255,255,.28)}
+.stv-reactbar{display:flex;gap:6px;background:rgba(0,0,0,.4);border-radius:24px;padding:6px 10px;
+  backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15)}
+.stv-reactbar button{font-size:22px;padding:4px 7px;border-radius:50%;transition:transform .12s ease}
+.stv-reactbar button:hover{transform:scale(1.3)}
+.stv-replybar{display:flex;gap:8px;width:100%;max-width:380px}
+.stv-replybar input{flex:1;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  border-radius:22px;padding:10px 16px;color:#fff;font-size:14px;outline:none}
+.stv-replybar input::placeholder{color:rgba(255,255,255,.6)}
+.stv-replybar input:focus{border-color:#FF8A5C;background:rgba(255,255,255,.2)}
+.stv-replybar button{width:42px;height:42px;border-radius:50%;flex:none;
+  background:linear-gradient(135deg,#FF8A5C,#F04E23);color:#fff;font-size:16px;
+  box-shadow:0 4px 14px rgba(240,78,35,.5)}
+/* --- v6: viewers bottom sheet --- */
+#viewers-sheet-root:empty{display:none}
+.vsheet-scrim{position:fixed;inset:0;z-index:180;background:rgba(11,20,26,.55);
+  backdrop-filter:blur(4px);animation:v6-fadein .18s ease-out}
+.vsheet{position:fixed;left:0;right:0;bottom:0;z-index:181;max-height:70vh;overflow-y:auto;
+  background:var(--sidebar-bg);border-radius:20px 20px 0 0;padding:10px 18px 26px;
+  box-shadow:0 -12px 48px rgba(11,20,26,.3);animation:v6-sheetup .32s cubic-bezier(.2,1.2,.35,1)}
+@keyframes v6-sheetup{from{transform:translateY(60%);opacity:0}to{transform:translateY(0);opacity:1}}
+.vsheet-grab{width:44px;height:5px;border-radius:3px;background:var(--divider-line);margin:4px auto 12px}
+.vsheet h3{font-size:16px;font-weight:700;margin-bottom:10px}
+.vsheet-list{display:flex;flex-direction:column}
+.vsheet-row{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--divider-line)}
+.vsheet-row .avatar.sm{width:38px;height:38px;flex:0 0 38px;font-size:14px}
+.vsheet-name{font-size:14.5px;font-weight:600}
+.vsheet-sub{font-size:12px;color:var(--text-dim)}
+.vsheet-time{font-size:12px;color:var(--text-dim);margin-left:auto}
+.vsheet-empty,.vsheet-loading{padding:26px;text-align:center;color:var(--text-dim);font-size:14px}
+/* --- v6: status viewers link in list --- */
+.st-viewers-link{color:var(--accent);font-size:12.5px;font-weight:600;padding:2px 4px;border-radius:6px}
+.st-viewers-link:hover{background:rgba(255,107,74,.12)}
+/* --- v6: status reply preview card in chat --- */
+.sref-card{border-left:3px solid var(--accent);border-radius:8px;overflow:hidden;margin-bottom:6px;
+  background:rgba(11,20,26,.05);max-width:240px}
+.sref-label{font-size:11px;font-weight:700;color:var(--accent);padding:6px 8px 2px}
+.sref-img{width:100%;max-height:120px;object-fit:cover;display:block}
+.sref-text{color:#fff;font-size:13px;padding:10px;font-weight:600;word-break:break-word}
+/* --- v6: reactor list --- */
+.reactor-list{max-height:40vh;overflow-y:auto;margin-bottom:8px}
+.reactor-row{padding:9px 2px;border-bottom:1px solid var(--divider-line);font-size:14.5px}
+/* --- v6: dark mode premium --- */
+html[data-theme="dark"] .side-header{box-shadow:0 2px 16px rgba(240,78,35,.3)}
+html[data-theme="dark"] .bubble{box-shadow:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.25)}
+html[data-theme="dark"] .modal{border:1px solid rgba(255,255,255,.12)}
+html[data-theme="dark"] .login-card{background:rgba(28,20,16,.88);color:#f5ede8}
+html[data-theme="dark"] .login-card h1,html[data-theme="dark"] .login-card .tagline{color:#fff}
+html[data-theme="dark"] .chat-row:hover{background:rgba(255,107,74,.08)}
+/* --- v6: call UI polish --- */
+.call-overlay{background:radial-gradient(circle at 50% 35%,rgba(255,107,74,.22),rgba(11,20,26,.96) 70%)}
+.call-avatar{box-shadow:0 0 0 6px rgba(255,107,74,.15),0 0 44px rgba(255,107,74,.45);overflow:hidden}
+.call-btn{transition:transform .12s ease,box-shadow .12s ease}
+.call-btn:hover{transform:scale(1.08)}
+.call-btn.accept{background:linear-gradient(135deg,#3ddc84,#1da851);box-shadow:0 6px 20px rgba(61,220,132,.5)}
+/* --- v6: message input glow on focus --- */
+#msg-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,74,.18);outline:none}
+/* --- v6: chat header depth --- */
+.chat-header{box-shadow:0 2px 10px rgba(11,20,26,.08);z-index:5}
+/* --- v6: settings polish --- */
+.set-ava{box-shadow:0 4px 16px rgba(240,78,35,.3);transition:transform .15s ease}
+.set-ava:hover{transform:scale(1.05)}
+.swatch{transition:transform .12s ease}
+.swatch:hover{transform:scale(1.15)}
+.swatch.sel{box-shadow:0 0 0 3px var(--sidebar-bg),0 0 0 5px var(--accent)}
+/* setup modal swatches reuse .swatch-grid/.swatch */
+
 /* ============ RESPONSIVE ============ */
 @media (max-width:720px){
   #sidebar{width:100%;min-width:0;max-width:none;border-right:none}
@@ -559,6 +738,7 @@ html[data-theme="dark"] #blocked-banner{background:#3a2c1a;color:#f5c86e}
 
 <!-- ============ LOGIN SCREEN (modeled on REA-observed web.whatsapp.com logged-out layout) ============ -->
 <div id="login-screen">
+  <div class="login-particles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="login-topband">
     <div class="login-brand">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5C16.9 5 5 16.4 5 30.2c0 5.6 2 10.8 5.3 14.9L7 58l13.6-3.5c3.5 1.6 7.3 2.5 11.4 2.5C47.1 57 59 45.6 59 31.8 59 18 47.1 5 32 5z" fill="#fff"/><circle cx="50" cy="12" r="7" fill="#fff" stroke="#E85A38" stroke-width="2.5"/></svg>
@@ -1131,10 +1311,13 @@ async function enterApp(){
   $('login-screen').classList.add('hidden');
   $('app').classList.remove('hidden');
   $('me-avatar').textContent = initials(profile.display_name);
-  $('me-avatar').style.background = avatarBg(profile.avatar_color);
+  paintAvatar($('me-avatar'), profile);
   $('me-name').textContent = profile.display_name;
   applyFontSize();   /* v5 */
   renderAll();
+  const _cl = $('chat-list');   /* v6: skeleton shimmer while loading */
+  if (_cl) _cl.innerHTML = Array(5).fill(
+    '<div class="skel"><div class="sk-a"></div><div class="sk-b"><i style="width:60%"></i><i style="width:85%"></i></div></div>').join('');
   await loadConversations();
   await loadBlocks();   /* v5 */
   renderAll();
@@ -1516,8 +1699,7 @@ function renderChatList(){
     const blocked = myBlocks.has(c.other.id);
     const showUnread = c.unread && !c.muted;
     return '<div class="chat-row' + (c.id === activeConvId ? ' active' : '') + '" data-id="' + c.id + '">' +
-      '<div class="avatar" style="background:' + avatarBg(c.other.avatar_color) + '">' +
-        esc(initials(c.other.display_name)) + '</div>' +
+      '<div class="avatar" style="' + avatarStyle(c.other) + '">' + avatarInner(c.other) + '</div>' +
       '<div class="chat-info"><div class="chat-top">' +
         '<div class="chat-name">' + esc(c.other.display_name) + '</div>' +
         '<div class="chat-time' + (showUnread ? ' unread' : '') + '">' +
@@ -1533,8 +1715,9 @@ function renderChatList(){
       '</div></div></div>';
   };
   if (!normal.length && !archived.length){
-    list.innerHTML = '<div class="no-results">' +
-      (conversations.length ? 'No chats found' : 'No chats yet — tap ✎ and find people by username to start.') +
+    list.innerHTML = '<div class="no-results"><div class="empty-illu"></div>' +
+      (conversations.length ? 'No chats found — try a different search.'
+        : '<b>No chats yet</b><br>Tap ✎ above and find people by username to start chatting.') +
       '</div>';
     return;
   }
@@ -1552,7 +1735,7 @@ function renderChatList(){
 function renderChatHeader(){
   const other = activeOther(); if (!other) return;
   $('chat-avatar').textContent = initials(other.display_name);
-  $('chat-avatar').style.background = avatarBg(other.avatar_color);
+  paintAvatar($('chat-avatar'), other);
   $('chat-name').textContent = other.display_name;
   const st = $('chat-status');
   if (typingFromOther){ st.textContent = 'typing...'; st.classList.add('typing'); }
@@ -1729,6 +1912,7 @@ function bubbleInnerHtml(m){
   }
   let h = '';
   if (m.is_forwarded) h += '<div class="fwd-label">Forwarded</div>';
+  h += statusRefHtml(m);   /* v6: status reply preview */
   h += quoteHtml(m);
   if (m.kind === 'voice' && m.audio_url) h += voiceHtml(m);
   else if (m.kind === 'poll' && m.poll) h += pollHtml(m);
@@ -1923,27 +2107,43 @@ function viewContactModal(){
 }
 async function clearActiveChat(){
   const conv = activeConv(); if (!conv) return;
-  closeModal();
-  try {
-    const { error } = await sb.from('messages').delete().eq('conversation_id', conv.id);
-    if (error) throw error;
-    messages = [];
-    conv.lastMsg = null;
-    renderAll();
-    toast('Chat cleared');
-  } catch(e){ toast('Could not clear chat — check your connection'); }
+  const nm = conv.other ? conv.other.display_name : 'this chat';
+  openModal('<h2>Clear chat?</h2>' +
+    '<p class="modal-sub">All messages with <b>' + esc(nm) + '</b> will be permanently deleted. This cannot be undone.</p>' +
+    '<div class="row"><button class="btn ghost" id="m-cancel">Cancel</button>' +
+    '<button class="btn danger" id="m-clear">Clear chat</button></div>');
+  $('m-cancel').addEventListener('click', closeModal);
+  $('m-clear').addEventListener('click', async () => {
+    closeModal();
+    try {
+      const { error } = await sb.from('messages').delete().eq('conversation_id', conv.id);
+      if (error) throw error;
+      messages = [];
+      conv.lastMsg = null;
+      renderAll();
+      toast('Chat cleared');
+    } catch(e){ toast('Could not clear chat — check your connection'); }
+  });
 }
 async function deleteActiveChat(){
   const conv = activeConv(); if (!conv) return;
-  closeModal();
-  try {
-    const { error } = await sb.from('conversations').delete().eq('id', conv.id);
-    if (error) throw error;
-    conversations = conversations.filter(c => c.id !== conv.id);
-    closeChat();
-    setupListChannel();
-    toast('Chat deleted');
-  } catch(e){ toast('Could not delete chat — check your connection'); }
+  const nm = conv.other ? conv.other.display_name : 'this chat';
+  openModal('<h2>Delete chat?</h2>' +
+    '<p class="modal-sub"><b>' + esc(nm) + '</b> will be removed from your chat list and its messages deleted for you. This cannot be undone.</p>' +
+    '<div class="row"><button class="btn ghost" id="m-cancel">Cancel</button>' +
+    '<button class="btn danger" id="m-delchat">Delete chat</button></div>');
+  $('m-cancel').addEventListener('click', closeModal);
+  $('m-delchat').addEventListener('click', async () => {
+    closeModal();
+    try {
+      const { error } = await sb.from('conversations').delete().eq('id', conv.id);
+      if (error) throw error;
+      conversations = conversations.filter(c => c.id !== conv.id);
+      closeChat();
+      setupListChannel();
+      toast('Chat deleted');
+    } catch(e){ toast('Could not delete chat — check your connection'); }
+  });
 }
 
 /* ---------- 11. MENUS / THEME ---------- */
@@ -2129,8 +2329,7 @@ function forwardModal(mid){
   if (!m || m.kind === 'deleted') return;
   const rows = conversations.map(c =>
     '<button class="fwd-row" data-fid="' + c.id + '">' +
-    '<div class="avatar" style="background:' + avatarBg(c.other.avatar_color) + '">' +
-      esc(initials(c.other.display_name)) + '</div>' +
+    '<div class="avatar" style="' + avatarStyle(c.other) + '">' + avatarInner(c.other) + '</div>' +
     '<div><div class="nm">' + esc(c.other.display_name) + '</div>' +
     '<div class="ab">@' + esc(c.other.username || '') + '</div></div></button>').join('');
   openModal('<h2>Forward to…</h2>' +
@@ -2556,17 +2755,10 @@ function callLog(kind, secs){
 function startRing(){
   try {
     stopRing();
-    ringCtx = ringCtx || new (window.AudioContext || window.webkitAudioContext)();
-    if (ringCtx.state === 'suspended') ringCtx.resume().catch(() => {});
-    const beep = (f, t0, dur) => {
-      const o = ringCtx.createOscillator(), g = ringCtx.createGain();
-      o.type = 'sine'; o.frequency.value = f;
-      g.gain.setValueAtTime(0.0001, t0);
-      g.gain.exponentialRampToValueAtTime(0.25, t0 + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-      o.connect(g); g.connect(ringCtx.destination);
-      o.start(t0); o.stop(t0 + dur + 0.05);
-    };
+    const ctx = audioCtx();   /* v6: shared unlocked ctx */
+    if (!ctx) return;
+    ringCtx = ctx;
+    const beep = (f, t0, dur) => tone(ctx, f, t0, dur, 0.25);
     const pattern = () => {
       if (!ringCtx) return;
       const t = ringCtx.currentTime;
@@ -2576,6 +2768,25 @@ function startRing(){
     ringTimer = setInterval(pattern, 1400);
     if (navigator.vibrate){ try { navigator.vibrate([400, 300, 400, 300]); } catch(e){} }
   } catch(e){ /* silent — the modal still shows */ }
+}
+/* v6: caller-side ringing tone — classic ring-ring loop while "Calling…" */
+let callerRingTimer = null;
+function startCallerRing(){
+  try {
+    stopCallerRing();
+    const ringOnce = () => {
+      const ctx = audioCtx();
+      if (!ctx || ctx.state !== 'running') return;
+      const t = ctx.currentTime;
+      tone(ctx, 440, t, 0.4, 0.18);
+      tone(ctx, 480, t + 0.55, 0.4, 0.18);
+    };
+    ringOnce();
+    callerRingTimer = setInterval(ringOnce, 2600);
+  } catch(e){}
+}
+function stopCallerRing(){
+  if (callerRingTimer){ clearInterval(callerRingTimer); callerRingTimer = null; }
 }
 function stopRing(){
   if (ringTimer){ clearInterval(ringTimer); ringTimer = null; }
@@ -2615,6 +2826,7 @@ function callCleanup(){
   if (!cs) return;
   callState = null;
   stopRing();
+  stopCallerRing();   /* v6 */
   if (cs.offerTimer){ clearTimeout(cs.offerTimer); }
   if (cs.callTimer){ clearInterval(cs.callTimer); }
   if (cs.localStream){ try { cs.localStream.getTracks().forEach(t => t.stop()); } catch(e){} }
@@ -2701,6 +2913,7 @@ async function startCall(kind){
     return;
   }
   renderCallUI('calling');
+  startCallerRing();   /* v6: caller hears ring-ring while waiting */
   callSend(conv.id, 'call-offer', { kind, sdp: pc.localDescription, from: ME.id, fromName: ME.profile.display_name });
   cs.offerTimer = setTimeout(() => { if (callState === cs && !cs.answered) endCall('timeout'); }, 30000);
 }
@@ -2782,6 +2995,7 @@ async function onCallAnswer(p){
     return;
   }
   cs.answered = true; cs.startTs = Date.now();
+  stopCallerRing();   /* v6: they picked up */
   renderCallUI('incall');
   startCallTimer();
 }
@@ -2849,7 +3063,8 @@ function callPeerInfo(cs){
   const c = conversations.find(x => x.id === cs.convId);
   const nm = (c && c.other.display_name) || cs.otherName || 'Unknown';
   const col = (c && c.other.avatar_color) || '#7f8c9b';
-  return { name: nm, color: col, initials: initials(nm) };
+  const url = (c && c.other.avatar_url) || null;
+  return { name: nm, color: col, initials: initials(nm), avatar_url: url, display_name: nm, avatar_color: col };
 }
 function renderCallUI(mode){
   const cs = callState;
@@ -2880,7 +3095,7 @@ function renderCallUI(mode){
   } else {
     stage = '<div class="call-avatar-wrap"><div class="call-ring"></div>' +
       '<div class="call-ring r2"></div><div class="call-ring r3"></div>' +
-      '<div class="call-avatar" style="background:' + avatarBg(p.color) + '">' + esc(p.initials) + '</div></div>' +
+      '<div class="call-avatar" style="' + avatarStyle(p) + '">' + avatarInner(p) + '</div></div>' +
       '<div class="call-name">' + esc(p.name) + '</div>' +
       '<div class="call-state">' + stateText + '</div>';
   }
@@ -2949,12 +3164,12 @@ function renderStatusList(){
   const mine = myStatuses[0];
   let html = '<div class="st-row" id="st-my">' +
     '<div class="st-ring seen"><div class="avatar" style="background:' +
-    avatarBg(ME.profile && ME.profile.avatar_color) + '">' +
-    esc(initials((ME.profile && ME.profile.display_name) || '?')) + '</div>' +
+    avatarStyle(ME.profile) + '">' + avatarInner(ME.profile) + '</div>' +
     '<div class="st-plus" id="st-plus" title="New status">+</div></div>' +
     '<div class="chat-info"><div class="chat-top"><div class="chat-name">My status</div></div>' +
     '<div class="chat-bottom"><div class="chat-preview">' +
-    (mine ? esc(relTime(mine.created_at)) + ' · ' + myStatuses.length + ' update' + (myStatuses.length > 1 ? 's' : '')
+    (mine ? esc(relTime(mine.created_at)) + ' · ' + myStatuses.length + ' update' + (myStatuses.length > 1 ? 's' : '') +
+      ' · <button class="st-viewers-link" data-sid="' + esc(mine.id) + '" title="See who viewed">👁 viewers</button>'
           : 'Tap to add a status') +
     '</div></div></div></div>';
   const uids = Object.keys(statusesByUser).sort((a, b) => {
@@ -2972,7 +3187,7 @@ function renderStatusList(){
       const unseen = items.some(s => !statusViews.has(s.id));
       html += '<div class="st-row" data-uid="' + esc(uid) + '">' +
         '<div class="st-ring ' + (unseen ? 'unseen' : 'seen') + '"><div class="avatar" style="background:' +
-        avatarBg(other.avatar_color) + '">' + esc(initials(other.display_name)) + '</div></div>' +
+        avatarStyle(other) + '">' + avatarInner(other) + '</div></div>' +
         '<div class="chat-info"><div class="chat-top"><div class="chat-name">' + esc(other.display_name) + '</div></div>' +
         '<div class="chat-bottom"><div class="chat-preview">' + esc(relTime(items[0].created_at)) +
         ' · ' + items.length + ' update' + (items.length > 1 ? 's' : '') + '</div></div></div></div>';
@@ -3075,6 +3290,7 @@ function renderStatusViewer(){
     '<div class="stv-tap l" id="stv-prev"></div><div class="stv-tap r" id="stv-next"></div>' +
     '<div class="stv-content" id="stv-content"></div>' +
     '<div class="stv-meta" id="stv-meta"></div>' +
+    '<div class="stv-actions" id="stv-actions"></div>' +
     '<button class="stv-del hidden" id="stv-del" title="Delete status">🗑</button>' +
     '</div></div>';
   $('stv-close').addEventListener('click', closeStatusViewer);
@@ -3088,14 +3304,13 @@ function showStatusItem(i){
   v.idx = Math.max(0, Math.min(v.items.length - 1, i));
   const s = v.items[v.idx];
   const own = v.uid === ME.id;
-  let nm = '?', col = '#7f8c9b';
-  if (own){ nm = ME.profile.display_name; col = ME.profile.avatar_color; }
+  let nm = '?', prof = { display_name: '?', avatar_color: '#7f8c9b' };
+  if (own){ nm = ME.profile.display_name; prof = ME.profile; }
   else {
     const c = conversations.find(x => x.other.id === v.uid);
-    if (c){ nm = c.other.display_name; col = c.other.avatar_color; }
+    if (c){ nm = c.other.display_name; prof = c.other; }
   }
-  $('stv-av').textContent = initials(nm);
-  $('stv-av').style.background = avatarBg(col);
+  paintAvatar($('stv-av'), prof);
   $('stv-name').textContent = nm;
   $('stv-time').textContent = relTime(s.created_at);
   $('stv-bars').innerHTML = v.items.map((_, k) =>
@@ -3109,15 +3324,46 @@ function showStatusItem(i){
     ct.innerHTML = '<div class="stv-text">' + esc(s.body || '').replace(/\n/g, '<br>') + '</div>';
   }
   const meta = $('stv-meta');
+  const acts = $('stv-actions');
   $('stv-del').classList.toggle('hidden', !own);
+  meta.textContent = '';
   if (own){
     const sid = s.id;
-    meta.textContent = '';
+    acts.innerHTML = '<button class="stv-views" id="stv-views">👁 …</button>' +
+      '<div class="stv-rchips" id="stv-rchips"></div>';
     countStatusViews(sid).then(n => {
-      if (stView === v && v.items[v.idx] && v.items[v.idx].id === sid)
-        meta.textContent = '👁 ' + n + ' view' + (n === 1 ? '' : 's');
+      if (stView === v && v.items[v.idx] && v.items[v.idx].id === sid){
+        const b = $('stv-views');
+        if (b) b.textContent = '👁 ' + n + ' view' + (n === 1 ? '' : 's') + ' — tap to see who';
+      }
     });
-  } else meta.textContent = '';
+    const vb = $('stv-views');
+    if (vb) vb.addEventListener('click', e => { e.stopPropagation(); openStatusViewers(sid); });
+    refreshStatusReactionChips(sid, v);
+  } else {
+    meta.textContent = '';
+    acts.innerHTML =
+      '<div class="stv-reactbar">' + ST_REACTS.map(e =>
+        '<button data-sr="' + e + '" title="React ' + e + '">' + e + '</button>').join('') + '</div>' +
+      '<div class="stv-replybar"><input id="stv-reply-in" placeholder="Reply to status…" maxlength="500" autocomplete="off">' +
+      '<button id="stv-reply-send" title="Send reply">➤</button></div>';
+    acts.querySelectorAll('[data-sr]').forEach(b =>
+      b.addEventListener('click', ev => { ev.stopPropagation(); reactToStatus(s.id, b.dataset.sr); }));
+    const send = () => sendStatusReply();
+    $('stv-reply-send').addEventListener('click', ev => { ev.stopPropagation(); send(); });
+    $('stv-reply-in').addEventListener('keydown', ev => {
+      ev.stopPropagation();
+      if (ev.key === 'Enter') send();
+    });
+    $('stv-reply-in').addEventListener('click', ev => ev.stopPropagation());
+    $('stv-reply-in').addEventListener('focus', () => {
+      if (v.timer){ clearTimeout(v.timer); v.timer = null; }   /* v6: don't advance mid-reply */
+    });
+    $('stv-reply-in').addEventListener('blur', () => {
+      if (stView === v && !v.timer) v.timer = setTimeout(() => stStep(1), 5000);
+    });
+  }
+  setupStatusReactionChannel(s.id, own, v);
   markStatusViewed(s.id);
   if (v.timer) clearTimeout(v.timer);
   v.timer = setTimeout(() => stStep(1), 5000);
@@ -3132,6 +3378,8 @@ function stStep(d){
 function closeStatusViewer(){
   if (stView && stView.timer) clearTimeout(stView.timer);
   stView = null;
+  if (stReactChannel){ try { sb.removeChannel(stReactChannel); } catch(e){} stReactChannel = null; }
+  stReactSid = null;
   $('status-viewer-root').innerHTML = '';
   loadStatuses();
 }
@@ -3149,6 +3397,173 @@ async function countStatusViews(sid){
       .eq('status_id', sid);
     return count || 0;
   } catch(e){ return 0; }
+}
+/* ---------- V6: STATUS VIEWERS SHEET ---------- */
+let viewersSheetSid = null, viewersChannel = null;
+async function openStatusViewers(sid){
+  viewersSheetSid = sid;
+  let root = $('viewers-sheet-root');
+  if (!root){
+    root = document.createElement('div');
+    root.id = 'viewers-sheet-root';
+    document.body.appendChild(root);
+  }
+  root.innerHTML = '<div class="vsheet-scrim" id="vsheet-scrim"></div>' +
+    '<div class="vsheet"><div class="vsheet-grab"></div><h3>Viewed by</h3>' +
+    '<div id="vsheet-list" class="vsheet-list"><div class="vsheet-loading">Loading…</div></div></div>';
+  $('vsheet-scrim').addEventListener('click', closeStatusViewers);
+  refreshStatusViewers();
+  try {
+    if (viewersChannel){ sb.removeChannel(viewersChannel); viewersChannel = null; }
+    viewersChannel = sb.channel('viewers:' + sid)
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'status_views',
+        filter: 'status_id=eq.' + sid }, () => refreshStatusViewers())
+      .subscribe();
+  } catch(e){}
+}
+async function refreshStatusViewers(){
+  const sid = viewersSheetSid;
+  if (!sid) return;
+  try {
+    const { data } = await sb.from('status_views').select('viewed_at, viewer_id')
+      .eq('status_id', sid).order('viewed_at', { ascending: false });
+    const ids = [...new Set((data || []).map(v => v.viewer_id))];
+    const profs = {};
+    if (ids.length){
+      const { data: pd } = await sb.from('profiles')
+        .select('id, display_name, username, avatar_color, avatar_url').in('id', ids);
+      (pd || []).forEach(p => { profs[p.id] = p; });
+    }
+    const list = $('vsheet-list');
+    if (!list || viewersSheetSid !== sid) return;
+    if (!data || !data.length){
+      list.innerHTML = '<div class="vsheet-empty">No views yet — share your status!</div>';
+      return;
+    }
+    list.innerHTML = data.map(vv => {
+      const p = profs[vv.viewer_id] || {};
+      return '<div class="vsheet-row"><div class="avatar sm" style="' + avatarStyle(p) + '">' +
+        avatarInner(p) + '</div><div class="grow"><div class="vsheet-name">' +
+        esc(p.display_name || 'Someone') + '</div><div class="vsheet-sub">@' +
+        esc(p.username || '') + '</div></div><div class="vsheet-time">' +
+        relTime(vv.viewed_at) + '</div></div>';
+    }).join('');
+  } catch(e){
+    const list = $('vsheet-list');
+    if (list) list.innerHTML = '<div class="vsheet-empty">Could not load viewers</div>';
+  }
+}
+function closeStatusViewers(){
+  viewersSheetSid = null;
+  if (viewersChannel){ try { sb.removeChannel(viewersChannel); } catch(e){} viewersChannel = null; }
+  const root = $('viewers-sheet-root');
+  if (root) root.innerHTML = '';
+}
+/* ---------- V6: STATUS REACTIONS ---------- */
+const ST_REACTS = ['❤️', '😂', '😮', '😢', '👍', '🔥'];
+let stReactChannel = null, stReactSid = null;
+async function reactToStatus(sid, emoji){
+  try {
+    const { error } = await sb.from('status_reactions')
+      .upsert({ status_id: sid, user_id: ME.id, emoji }, { onConflict: 'status_id,user_id' });
+    if (error) throw error;
+    toast('Reacted ' + emoji);
+  } catch(e){ toast('Could not react'); }
+}
+async function loadStatusReactions(sid){
+  try {
+    const { data } = await sb.from('status_reactions')
+      .select('emoji, user_id').eq('status_id', sid);
+    return data || [];
+  } catch(e){ return []; }
+}
+async function refreshStatusReactionChips(sid, v){
+  const box = $('stv-rchips');
+  if (!box || !stView || stView !== v) return;
+  const rx = await loadStatusReactions(sid);
+  if (!stView || stView !== v || !$('stv-rchips')) return;
+  if (!rx.length){ box.innerHTML = ''; return; }
+  const groups = {};
+  rx.forEach(r => { (groups[r.emoji] = groups[r.emoji] || []).push(r.user_id); });
+  box.innerHTML = Object.keys(groups).map(e =>
+    '<button class="stv-rchip" data-re="' + esc(e) + '">' + esc(e) + ' ' + groups[e].length + '</button>').join('');
+  box.querySelectorAll('[data-re]').forEach(b =>
+    b.addEventListener('click', ev => { ev.stopPropagation(); showStatusReactors(sid, b.dataset.re); }));
+}
+async function showStatusReactors(sid, emoji){
+  const rx = await loadStatusReactions(sid);
+  const ids = rx.filter(r => r.emoji === emoji).map(r => r.user_id);
+  let names = ids.map(id => id === ME.id ? 'You' : 'Someone');
+  if (ids.length){
+    try {
+      const { data } = await sb.from('profiles').select('id, display_name').in('id', ids);
+      const m = {};
+      (data || []).forEach(p => { m[p.id] = p.display_name; });
+      names = ids.map(id => id === ME.id ? 'You' : (m[id] || 'Someone'));
+    } catch(e){}
+  }
+  openModal('<h2>' + esc(emoji) + ' reactions</h2>' +
+    '<div class="reactor-list">' + names.map(n =>
+      '<div class="reactor-row">' + esc(n) + '</div>').join('') + '</div>' +
+    '<div class="row"><button class="btn primary" id="m-ok">Done</button></div>');
+  const ov = $('m-overlay');
+  if (ov) ov.style.zIndex = 200;
+  $('m-ok').addEventListener('click', closeModal);
+}
+function setupStatusReactionChannel(sid, own, v){
+  try {
+    if (stReactChannel){ sb.removeChannel(stReactChannel); stReactChannel = null; }
+    stReactSid = own ? sid : null;
+    if (!own) return;
+    stReactChannel = sb.channel('streact:' + sid)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'status_reactions',
+        filter: 'status_id=eq.' + sid }, () => refreshStatusReactionChips(sid, v))
+      .subscribe();
+  } catch(e){}
+}
+/* ---------- V6: STATUS REPLY ---------- */
+async function sendStatusReply(){
+  const v = stView;
+  if (!v || v.uid === ME.id) return;
+  const s = v.items[v.idx];
+  if (!s) return;
+  const inp = $('stv-reply-in');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  try {
+    let conv = conversations.find(c => c.other.id === v.uid);
+    if (!conv){
+      await findOrCreateConversation(v.uid);
+      await loadConversations();
+      setupListChannel();
+      conv = conversations.find(c => c.other.id === v.uid);
+    }
+    if (!conv) throw new Error('no conv');
+    const ref = { status_id: s.id, kind: s.kind, body: s.body || '', image_url: s.image_url || null, bg: s.bg || null };
+    const { error } = await sb.from('messages').insert({
+      conversation_id: conv.id, sender_id: ME.id, body: text, status_ref: ref
+    });
+    if (error) throw error;
+    toast('Reply sent ✓');
+  } catch(e){
+    if (e && (e.code === '42501' || /row-level security/i.test(e.message || '')))
+      toast("You can't message this contact");
+    else toast('Reply not sent — try again');
+  }
+}
+/* mini status preview card inside a chat bubble */
+function statusRefHtml(m){
+  const r = m.status_ref;
+  if (!r || typeof r !== 'object') return '';
+  let prev;
+  if (r.kind === 'image' && r.image_url){
+    prev = '<img class="sref-img" src="' + esc(r.image_url) + '" alt="Status">';
+  } else {
+    prev = '<div class="sref-text" style="background:' + esc(r.bg || '#FF6B4A') + '">' +
+      esc(String(r.body || '').slice(0, 90)) + '</div>';
+  }
+  return '<div class="sref-card"><div class="sref-label">⭕ Replied to status</div>' + prev + '</div>';
 }
 function deleteStatusItem(){
   const v = stView;
@@ -3178,7 +3593,39 @@ let archivedOpen = false;
 let settingsOpen = false;
 let drawerConvId = null;
 let rowCtxId = null, ctxMode = 'bubble', rowMenuAt = 0;
-let gSearchTimer = null, popCtx = null;
+let gSearchTimer = null;
+/* v6: shared WebAudio — created/resumed on first user gesture (autoplay policy).
+   Without this, sounds created before any tap stay suspended forever. */
+let _audioCtx = null, _audioUnlocked = false;
+function audioCtx(){
+  try {
+    if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (_audioCtx.state === 'suspended' && _audioUnlocked)
+      _audioCtx.resume().catch(() => {});
+    return _audioCtx;
+  } catch(e){ return null; }
+}
+function unlockAudio(){
+  _audioUnlocked = true;
+  try {
+    if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (_audioCtx.state === 'suspended') _audioCtx.resume().catch(() => {});
+  } catch(e){}
+}
+['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+  document.addEventListener(ev, unlockAudio, { passive: true }));
+/* v6: generic tone helper — never throws */
+function tone(ctx, freq, t0, dur, vol, type){
+  try {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol || 0.2, t0 + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t0); o.stop(t0 + dur + 0.05);
+  } catch(e){}
+}
 
 /* --- v5 settings helpers --- */
 function receiptsOn(){ try { return localStorage.getItem('bubble-rr') !== '0'; } catch(e){ return true; } }
@@ -3197,6 +3644,29 @@ function avatarBg(color){
   const c = color || '#7f8c9b';
   return 'linear-gradient(135deg,' + c + ',' + shade(c, -28) + ')';
 }
+/* v6: profile photos — photo if avatar_url, else gradient + initial */
+function avatarInner(p){
+  p = p || {};
+  if (p.avatar_url) return '<img class="ava-img" src="' + esc(p.avatar_url) + '" alt="">';
+  return esc(initials(p.display_name || p.name || '?'));
+}
+function avatarStyle(p){
+  p = p || {};
+  if (p.avatar_url) return '';
+  return 'background:' + avatarBg(p.avatar_color || p.color);
+}
+/* v6: paint a DOM avatar element (photo or gradient) */
+function paintAvatar(el, p){
+  if (!el) return;
+  p = p || {};
+  if (p.avatar_url){
+    el.innerHTML = '<img class="ava-img" src="' + esc(p.avatar_url) + '" alt="">';
+    el.style.background = '';
+  } else {
+    el.textContent = initials(p.display_name || p.name || '?');
+    el.style.background = avatarBg(p.avatar_color || p.color);
+  }
+}
 function fmtDateTime(ts){
   const d = new Date(ts);
   return d.toLocaleDateString(undefined, { day:'numeric', month:'short', year:'numeric' }) + ', ' + fmtTime(ts);
@@ -3205,22 +3675,53 @@ function expDate(ts){
   const d = new Date(ts), p = n => String(n).padStart(2, '0');
   return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
 }
-/* v5: soft pop for incoming messages (WebAudio, no assets) */
+/* v5: soft pop for incoming messages (WebAudio, no assets) — v6: uses shared unlocked ctx */
 function playPop(){
   if (!soundOn()) return;
   try {
-    popCtx = popCtx || new (window.AudioContext || window.webkitAudioContext)();
-    if (popCtx.state === 'suspended') popCtx.resume().catch(() => {});
-    const t = popCtx.currentTime;
-    const o = popCtx.createOscillator(), g = popCtx.createGain();
+    const ctx = audioCtx();
+    if (!ctx || ctx.state !== 'running') return;   /* no gesture yet — stay silent */
+    const t = ctx.currentTime;
+    tone(ctx, 660, t, 0.09, 0.16);
+    const o = ctx.createOscillator(), g = ctx.createGain();
     o.type = 'sine';
     o.frequency.setValueAtTime(660, t);
-    o.frequency.exponentialRampToValueAtTime(880, t + 0.08);
+    o.frequency.exponentialRampToValueAtTime(990, t + 0.09);
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(0.18, t + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
-    o.connect(g); g.connect(popCtx.destination);
-    o.start(t); o.stop(t + 0.2);
+    g.gain.exponentialRampToValueAtTime(0.16, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t); o.stop(t + 0.25);
+  } catch(e){}
+}
+/* v6: play the notification pop on demand (settings test button) — bypasses the toggle */
+function playTestSound(){
+  unlockAudio();
+  setTimeout(() => {
+    try {
+      const ctx = audioCtx();
+      if (!ctx || ctx.state !== 'running'){ toast('Tap anywhere first, then test again'); return; }
+      const t = ctx.currentTime;
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(660, t);
+      o.frequency.exponentialRampToValueAtTime(990, t + 0.09);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.16, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(t); o.stop(t + 0.25);
+      /* also demo the caller ring so users hear both */
+      setTimeout(playCallerRingSample, 450);
+    } catch(e){ toast('Sound unavailable on this device'); }
+  }, 120);
+}
+function playCallerRingSample(){
+  try {
+    const ctx = audioCtx();
+    if (!ctx || ctx.state !== 'running') return;
+    const t = ctx.currentTime;
+    tone(ctx, 440, t, 0.35, 0.2); tone(ctx, 480, t + 0.45, 0.35, 0.2);
   } catch(e){}
 }
 
@@ -3363,8 +3864,7 @@ async function runGlobalSearch(q){
         const who = m.sender_id === ME.id ? 'You' : nm;
         const avName = m.sender_id === ME.id ? (ME.profile.display_name || '?') : nm;
         html += '<div class="sr-item" data-cid="' + cid + '" data-mid="' + m.id + '">' +
-          '<div class="avatar" style="background:' + avatarBg(conv && conv.other.avatar_color) + '">' +
-          esc(initials(avName)) + '</div>' +
+          '<div class="avatar" style="' + avatarStyle(conv && conv.other) + '">' + avatarInner(conv && conv.other) + '</div>' +
           '<div class="tx"><div class="nm">' + esc(who) + ' · ' + fmtTime(tsOf(m.created_at)) + '</div>' +
           '<div class="bd">' + bd + '</div></div></div>';
       });
@@ -3415,8 +3915,7 @@ function openContactDrawer(rerender){
   panel.innerHTML = '<div class="drawer-head"><div class="t">Contact info</div>' +
     '<button id="drawer-close" title="Close">✕</button></div>' +
     '<div class="drawer-body">' +
-    '<div class="drawer-hero"><div class="avatar" style="background:' + avatarBg(other.avatar_color) + '">' +
-    esc(initials(other.display_name)) + '</div>' +
+    '<div class="drawer-hero"><div class="avatar" style="' + avatarStyle(other) + '">' + avatarInner(other) + '</div>' +
     '<div class="nm">' + esc(other.display_name) + '</div>' +
     '<div class="un">@' + esc(other.username || '') + '</div>' +
     (other.bio ? '<div class="bio">' + esc(other.bio) + '</div>' : '') + '</div>' +
@@ -3492,10 +3991,13 @@ function renderSettings(){
   const colors = AVATAR_COLORS.slice(0, 8);
   body.innerHTML =
   '<div class="set-section"><h3>Profile</h3>' +
-    '<div class="set-row"><div class="set-ava" id="set-ava" style="background:' + avatarBg(p.avatar_color) + '">' +
-      esc(initials(p.display_name)) + '</div>' +
+    '<div class="set-row"><div class="set-ava" id="set-ava" style="' + avatarStyle(p) + '" title="Change photo">' +
+      avatarInner(p) + '</div>' +
     '<div class="grow"><div class="set-label">@' + esc(p.username || '') + '</div>' +
-    '<div class="set-desc">Your username — friends find you with it. It can\'t be changed.</div></div></div>' +
+    '<div class="set-desc">Your username — friends find you with it. It can\'t be changed.</div>' +
+    '<div class="ava-actions"><button class="btn ghost sm" id="set-photo">📷 Change photo</button>' +
+    (p.avatar_url ? '<button class="btn ghost sm" id="set-photo-rm">Remove</button>' : '') +
+    '<input type="file" id="set-photo-in" accept="image/*" class="hidden"></div></div></div>' +
     '<div class="set-row"><div class="grow"><div class="set-label">Display name</div>' +
       '<input type="text" id="set-name" maxlength="30" value="' + esc(p.display_name || '') + '" autocomplete="off"></div></div>' +
     '<div class="set-row"><div class="grow"><div class="set-label">Bio</div>' +
@@ -3536,6 +4038,9 @@ function renderSettings(){
       '<div class="set-desc">Soft pop for new messages in other chats.</div></div>' +
       '<label class="switch"><input type="checkbox" id="set-sound"' + (soundOn() ? ' checked' : '') +
       '><span class="sl"></span></label></div>' +
+    '<div class="set-row"><div class="grow"><div class="set-label">Call sounds</div>' +
+      '<div class="set-desc">Ringtone for incoming calls, ringing tone while dialing. Always on.</div></div>' +
+      '<button class="btn ghost sm" id="set-testsound">🔊 Play test sound</button></div>' +
   '</div>' +
   '<div class="set-section"><h3>Account</h3>' +
     '<div class="set-row"><div class="grow"><div class="set-label">Change password</div>' +
@@ -3555,10 +4060,29 @@ function renderSettings(){
     selColor = s.dataset.c;
     document.querySelectorAll('#set-colors .swatch').forEach(x =>
       x.classList.toggle('sel', x.dataset.c === selColor));
-    $('set-ava').style.background = avatarBg(selColor);
+    if (!ME.profile.avatar_url) $('set-ava').style.background = avatarBg(selColor);
   });
   $('set-name').addEventListener('input', e => {
     $('set-ava').textContent = initials(e.target.value.trim() || '?');
+  });
+  /* v6: profile photo upload */
+  const photoIn = $('set-photo-in');
+  if ($('set-photo')) $('set-photo').addEventListener('click', () => photoIn.click());
+  if ($('set-ava')) $('set-ava').addEventListener('click', () => photoIn.click());
+  if ($('set-photo-rm')) $('set-photo-rm').addEventListener('click', async () => {
+    try {
+      const { error } = await sb.from('profiles').update({ avatar_url: null }).eq('id', ME.id);
+      if (error) throw error;
+      ME.profile.avatar_url = null;
+      paintAvatar($('set-ava'), ME.profile);
+      paintAvatar($('me-avatar'), ME.profile);
+      toast('Photo removed');
+      renderSettings();
+    } catch(e){ toast('Could not remove photo'); }
+  });
+  if (photoIn) photoIn.addEventListener('change', () => {
+    if (photoIn.files && photoIn.files[0]) handleAvatarFile(photoIn.files[0]);
+    photoIn.value = '';
   });
   $('set-save').addEventListener('click', async () => {
     const name = $('set-name').value.trim();
@@ -3569,8 +4093,7 @@ function renderSettings(){
         .update({ display_name: name, bio, avatar_color: selColor }).eq('id', ME.id);
       if (error) throw error;
       ME.profile.display_name = name; ME.profile.bio = bio; ME.profile.avatar_color = selColor;
-      $('me-avatar').textContent = initials(name);
-      $('me-avatar').style.background = avatarBg(selColor);
+      paintAvatar($('me-avatar'), ME.profile);
       $('me-name').textContent = name;
       toast('Profile saved ✓');
     } catch(e){ toast('Could not save profile'); }
@@ -3605,6 +4128,8 @@ function renderSettings(){
   $('set-sound').addEventListener('change', e => {
     try { localStorage.setItem('bubble-sound', e.target.checked ? '1' : '0'); } catch(err){}
   });
+  const tsb = $('set-testsound');
+  if (tsb) tsb.addEventListener('click', playTestSound);
   renderBlockedList();
   /* account */
   $('set-pw-save').addEventListener('click', async () => {
@@ -3639,14 +4164,45 @@ async function renderBlockedList(){
   try {
     const { data } = await sb.from('profiles').select('*').in('id', [...myBlocks]);
     box.innerHTML = (data || []).map(pp =>
-      '<div class="blocked-row"><div class="avatar" style="background:' + avatarBg(pp.avatar_color) + '">' +
-      esc(initials(pp.display_name)) + '</div><div class="grow"><div class="nm">' + esc(pp.display_name) +
+      '<div class="blocked-row"><div class="avatar" style="' + avatarStyle(pp) + '">' + avatarInner(pp) + '</div><div class="grow"><div class="nm">' + esc(pp.display_name) +
       '</div><div class="ab">@' + esc(pp.username || '') + '</div></div>' +
       '<button class="btn small" data-unblock="' + pp.id + '">Unblock</button></div>').join('') ||
       '<div class="set-desc" style="padding:0 18px 12px">No blocked contacts.</div>';
     box.querySelectorAll('[data-unblock]').forEach(b =>
       b.addEventListener('click', async () => { await unblockUser(b.dataset.unblock); renderSettings(); }));
   } catch(e){ box.innerHTML = ''; }
+}
+
+/* v6: resize + upload profile photo to chat-images/avatars/<uid>.jpg */
+async function handleAvatarFile(file){
+  if (!file || !file.type.startsWith('image/')){ toast('Please choose an image file'); return; }
+  toast('Uploading photo…');
+  try {
+    const img = new Image();
+    const loaded = new Promise((res, rej) => { img.onload = res; img.onerror = rej; });
+    img.src = URL.createObjectURL(file);
+    await loaded;
+    const S = 256, scale = Math.min(1, S / Math.max(img.width, img.height));
+    const cv = document.createElement('canvas');
+    cv.width = Math.max(1, Math.round(img.width * scale));
+    cv.height = Math.max(1, Math.round(img.height * scale));
+    cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+    const blob = await new Promise(res => cv.toBlob(res, 'image/jpeg', 0.85));
+    if (!blob) throw new Error('encode');
+    const path = 'avatars/' + ME.id + '.jpg';
+    const { error: upErr } = await sb.storage.from('chat-images')
+      .upload(path, blob, { contentType: 'image/jpeg', upsert: true });
+    if (upErr) throw upErr;
+    const { data: pub } = sb.storage.from('chat-images').getPublicUrl(path);
+    const url = pub.publicUrl + '?t=' + Date.now();   /* bust caches */
+    const { error } = await sb.from('profiles').update({ avatar_url: url }).eq('id', ME.id);
+    if (error) throw error;
+    ME.profile.avatar_url = url;
+    paintAvatar($('set-ava'), ME.profile);
+    paintAvatar($('me-avatar'), ME.profile);
+    toast('Profile photo updated ✓');
+    renderSettings();
+  } catch(e){ toast('Could not upload photo — try again'); }
 }
 
 /* ---------- 13. EVENT WIRING ---------- */
@@ -3714,6 +4270,8 @@ function wire(){
   $('tab-status').addEventListener('click', () => switchSideTab('status'));    /* v4 */
   /* v4: status list clicks */
   $('status-list').addEventListener('click', e => {
+    const vl = e.target.closest('.st-viewers-link');
+    if (vl){ e.stopPropagation(); openStatusViewers(vl.dataset.sid); return; }
     if (e.target.closest('#st-plus')){ e.stopPropagation(); postStatusModal(); return; }
     if (e.target.closest('#st-my')){
       if (myStatuses.length) openStatusViewer(ME.id);
@@ -3725,6 +4283,7 @@ function wire(){
   });
   $('status-file-input').addEventListener('change', e => { handleStatusFile(e.target.files[0]); e.target.value = ''; });
   document.addEventListener('keydown', e => {   /* v4: Escape closes status viewer */
+    if (e.key === 'Escape' && typeof viewersSheetSid !== 'undefined' && viewersSheetSid){ closeStatusViewers(); return; }
     if (e.key === 'Escape' && stView) closeStatusViewer();
   });
   $('menu-btn').addEventListener('click', e => { e.stopPropagation(); $('chat-menu').classList.add('hidden'); $('main-menu').classList.toggle('hidden'); });
